@@ -1,6 +1,8 @@
 use std::{convert::Infallible, net::SocketAddr, str::FromStr};
+use hyper::server::conn::AddrStream;
 use hyper::service::{make_service_fn, service_fn};
 use hyper::{Client, Server};
+use core::net::IpAddr;
 
 use crate::proxy;
 
@@ -17,13 +19,14 @@ pub async fn start_server(ip: String) {
 
     let client = Client::new();
 
-    let make_svc = make_service_fn(move |_| {
+    let make_svc = make_service_fn(move |conn: &AddrStream| {
         let client = client.clone();
         let backend_server = backend_server.clone();
+        let addr = conn.remote_addr().ip();
 
-        async {
+        async move {
             Ok::<_, Infallible>(service_fn(move |req| {
-                proxy::handle_proxy_request(req, client.clone(), backend_server.clone())
+                proxy::handle_proxy_request(req, client.clone(), backend_server.clone(), addr.clone())
             }))
         }
     });
