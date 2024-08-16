@@ -2,7 +2,6 @@ use std::{convert::Infallible, net::SocketAddr, str::FromStr};
 use hyper::server::conn::AddrStream;
 use hyper::service::{make_service_fn, service_fn};
 use hyper::{Client, Server};
-use core::net::IpAddr;
 
 use crate::proxy;
 
