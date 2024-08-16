@@ -5,7 +5,7 @@ use std::sync::Mutex;
 use lazy_static::lazy_static;
 
 
-const MAX_BUCKET_SIZE: f32 = 3.0;
+const MAX_BUCKET_SIZE: f32 = 20.0;
 const REFILL_RATE: f32 = 1.0;
 
 lazy_static! {

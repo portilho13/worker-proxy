@@ -14,7 +14,7 @@ pub async fn start_server(ip: String) {
         }
     };
 
-    let backend_server: hyper::Uri = "http://localhost:8080/ola".parse().unwrap(); // Parse backend_server as hyper::Uri
+    let backend_server: hyper::Uri = "https://github.com/portilho13/worker-proxy".parse().unwrap(); // Parse backend_server as hyper::Uri
 
     let client = Client::new();
 
