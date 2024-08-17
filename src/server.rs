@@ -14,7 +14,7 @@ pub async fn start_server(ip: String) {
         }
     };
 
-    let backend_server: hyper::Uri = "https://github.com/portilho13/worker-proxy".parse().unwrap(); // Parse backend_server as hyper::Uri
+    let backend_server: hyper::Uri = "http://192.168.1.80:3000".parse().unwrap(); // Parse backend_server as hyper::Uri
 
     let client = Client::new();
 
